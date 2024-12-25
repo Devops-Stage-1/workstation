@@ -34,10 +34,9 @@ resource "null_resource" "shell" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo su",
+      "sudo -i",
       "pip3.11 install ansible",
-      "labauto gocd-agent",
-      ""
+      "labauto install gocd-agent"
     ]
   }
 }
