@@ -18,7 +18,7 @@ resource "aws_instance" "main" {
   }
 
   tags = {
-    Name = "work"
+    Name = "workstation"
     monitor = "yes"
   }
 }
