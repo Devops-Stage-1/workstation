@@ -23,6 +23,13 @@ resource "aws_instance" "main" {
   }
 }
 
+resource "null_resource" "file" {
+
+  provisioner "file" {
+    source      = "${path.module}/setup.sh"
+    destination = "/tmp/setup.sh"
+  }
+}
 resource "null_resource" "shell" {
 
   connection {
@@ -34,7 +41,7 @@ resource "null_resource" "shell" {
 
   provisioner "remote-exec" {
     inline = [
-      "bash setup.sh"
+      "bash /tmp/setup.sh"
     ]
   }
 }
