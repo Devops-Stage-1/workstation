@@ -32,14 +32,10 @@ resource "null_resource" "shell" {
     host     = aws_instance.main.public_ip
   }
 
-  provisioner "file" {
-    source      = "${path.module}/setup.sh"
-    destination = "/tmp/setup.sh"
-  }
-
   provisioner "remote-exec" {
     inline = [
-      "bash /tmp/setup.sh"
+      "sudo pip3.11 install ansible",
+      "labauto install gocd-agent"
     ]
   }
 }
