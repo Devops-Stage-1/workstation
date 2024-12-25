@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    null = {
+      source  = "hashicorp/null"
+      version = "3.2.2"
+    }
+  }
+}
 resource "aws_instance" "main" {
   ami           = data.aws_ami.image.id
   instance_type = var.instance_type
@@ -15,7 +23,7 @@ resource "aws_instance" "main" {
   }
 }
 
-resource "aws_instance" "provisioner" {
+resource "null_resource" "shell" {
 
   connection {
     type     = "ssh"
