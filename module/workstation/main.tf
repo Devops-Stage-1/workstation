@@ -18,18 +18,11 @@ resource "aws_instance" "main" {
   }
 
   tags = {
-    Name = "Wokrstation"
+    Name = "work"
     monitor = "yes"
   }
 }
 
-resource "null_resource" "file" {
-
-  provisioner "file" {
-    source      = "${path.module}/setup.sh"
-    destination = "/tmp/setup.sh"
-  }
-}
 resource "null_resource" "shell" {
 
   connection {
@@ -37,6 +30,11 @@ resource "null_resource" "shell" {
     user     = "ec2-user"
     password = "DevOps321"
     host     = aws_instance.main.public_ip
+  }
+
+  provisioner "file" {
+    source      = "${path.module}/setup.sh"
+    destination = "/tmp/setup.sh"
   }
 
   provisioner "remote-exec" {
