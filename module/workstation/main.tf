@@ -34,7 +34,7 @@ resource "null_resource" "shell" {
 
   provisioner "remote-exec" {
     inline = [
-      "ls -la"
+      "bash setup.sh"
     ]
   }
 }
