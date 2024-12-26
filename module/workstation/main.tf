@@ -34,8 +34,7 @@ resource "null_resource" "shell" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo su",
-      "pip3.11 install ansible",
+      "pip3.11 install ansible"
     ]
   }
 
