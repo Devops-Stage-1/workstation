@@ -34,12 +34,7 @@ resource "null_resource" "shell" {
 
   provisioner "remote-exec" {
     inline = [
-      "pip3.11 install ansible"
-    ]
-  }
-
-  provisioner "remote-exec" {
-    inline = [
+      "pip3.11 install ansible",
       "ansible-pull -i localhost, -U https://github.com/Devops-Stage-1/ansible-work.git -e ansible_user=ec2-user -e ansible_password=DevOps321 work.yml"
     ]
   }
